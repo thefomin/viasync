@@ -7,6 +7,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 interface DocumentContextType {
 	documentRef: React.RefObject<HTMLElement>
 	navbarRef: React.RefObject<HTMLDivElement>
+	iconRef: React.RefObject<HTMLDivElement>
 	isResetting: boolean
 	isCollapsed: boolean
 	isMobile: boolean
@@ -26,6 +27,7 @@ export function DocumentProvider({ children }: { children: React.ReactNode }) {
 	const isMobile = useMediaQuery('(max-width: 768px)')
 	const isResizingRef = useRef(false)
 	const documentRef = useRef<HTMLElement | null>(null)
+	const iconRef = useRef<HTMLDivElement | null>(null)
 	const navbarRef = useRef<HTMLDivElement | null>(null)
 	const [isResetting, setIsResetting] = useState(false)
 	const [isCollapsed, setIsCollapsed] = useState(true)
@@ -107,11 +109,15 @@ export function DocumentProvider({ children }: { children: React.ReactNode }) {
 
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
+			const target = event.target as Node
 			if (
 				documentRef.current &&
-				!documentRef.current.contains(event.target as Node)
+				!documentRef.current.contains(target) &&
+				iconRef.current &&
+				!iconRef.current.contains(target)
 			) {
 				setIsCollapsed(true)
+				// Дополнительно: можно изменить состояние иконки, если требуется
 			}
 		}
 
@@ -126,6 +132,7 @@ export function DocumentProvider({ children }: { children: React.ReactNode }) {
 		<DocumentContext.Provider
 			value={{
 				documentRef,
+				iconRef,
 				navbarRef,
 				isResetting,
 				isCollapsed,

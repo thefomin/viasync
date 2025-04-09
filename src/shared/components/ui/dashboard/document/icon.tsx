@@ -5,22 +5,26 @@ import Picker from '@emoji-mart/react'
 import { useTheme } from 'next-themes'
 
 import { Button, Popover, PopoverContent, PopoverTrigger } from '../..'
+import { useDocument } from '@/shared/providers'
 
 interface IconPickerProps {
-	onChange: (icon: string) => void
+	onChange: (icon: { native: string }) => void
 	onClick: () => void
 	children: React.ReactNode
 }
 
 export function IconPicker({ onChange, children, onClick }: IconPickerProps) {
 	const { theme } = useTheme()
-
+	const { iconRef } = useDocument()
 	return (
 		<Popover>
 			<PopoverTrigger asChild>
-				<div onClick={e => e.stopPropagation()}>{children}</div>
+				<div ref={iconRef} onClick={e => e.stopPropagation()}>
+					{children}
+				</div>
 			</PopoverTrigger>
 			<PopoverContent
+				ref={iconRef}
 				className='z-[99999] w-full rounded-xl border bg-third p-0'
 				onClick={e => e.stopPropagation()}
 			>

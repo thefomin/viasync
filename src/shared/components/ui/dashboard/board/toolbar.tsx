@@ -88,11 +88,11 @@ export const ToolbarBoard = ({
 		}
 	}
 
-	const handleEmojiSelect = (icon: string) => {
+	const handleEmojiSelect = (icon: { native: string }) => {
 		queryClientService.updateAllFields(
 			initialData,
 			{
-				icon,
+				icon: icon.native,
 				updatedAt: new Date().toISOString()
 			},
 			{ updateFavorites: true }
@@ -100,10 +100,9 @@ export const ToolbarBoard = ({
 
 		update({
 			id: initialData?.id,
-			data: { icon, updatedAt: new Date().toISOString() }
+			data: { icon: icon.native, updatedAt: new Date().toISOString() }
 		})
 	}
-
 	const deleteIcon = () => {
 		queryClientService.updateAllFields(
 			initialData,
