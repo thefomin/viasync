@@ -1,18 +1,15 @@
 'use client'
 
-import { ElementRef, useCallback, useRef } from 'react'
+import { ElementRef, useRef } from 'react'
 import { BsEmojiSmileFill } from 'react-icons/bs'
 import TextareaAutosize from 'react-textarea-autosize'
 
 import { AiFillPicture } from 'react-icons/ai'
-import { useUpdateMutation } from '@/shared/hooks/document'
+import { useDocumentUpdater } from '@/shared/hooks/document'
 import { IDocument } from '@/shared/types/document'
-import { debounce } from 'lodash'
-import { useQueryClient } from '@tanstack/react-query'
 import { Button } from '../..'
 import { CoverDropdown, IconPicker } from '.'
 import { cn } from '@/shared/utils'
-import { QueryClientService } from '@/shared/services/document'
 
 interface ToolbarProps {
 	initialData: IDocument
@@ -20,97 +17,21 @@ interface ToolbarProps {
 }
 
 export const Toolbar = ({ initialData, preview }: ToolbarProps) => {
-	// const [isEditing, setIsEditing] = useState(false)
-	const queryClient = useQueryClient()
-	const { update } = useUpdateMutation()
-	const queryClientService = new QueryClientService(queryClient)
-
 	const inputRef = useRef<ElementRef<'textarea'>>(null)
 
-	// const { data: document } = useQuery({
-	// 	queryKey: [documentApiQuery.baseKey, initialData.id],
-	// 	queryFn: async () =>
-	// 		queryClient.getQueryData<IDocument>([
-	// 			documentApiQuery.baseKey,
-	// 			initialData.id
-	// 		]) ?? []
-	// })
-	// const currentDocument = document as IDocument
 	const title = initialData.title
 	const icon = initialData.icon
-
-	const disabledInput = () => {
-		// setIsEditing(false)
-		if (title !== initialData.title) {
-			initialData.title = title
-		}
-	}
-	/* eslint-disable-next-line react-hooks/exhaustive-deps */
-	const debouncedUpdate = useCallback(
-		debounce(
-			(value: string) => {
-				update({
-					id: initialData.id,
-					data: {
-						title: value || 'Untitled',
-						updatedAt: new Date().toISOString()
-					}
-				})
-			},
-			500,
-			{ leading: false, trailing: true }
-		),
-		[initialData.id]
-	)
-	// console.log('title toolbar ' + JSON.stringify(title))
+	const documentUpdater = useDocumentUpdater(initialData)
 	const onChange = (value: string) => {
-		queryClientService.updateAllFields(
-			initialData,
-			{
-				title: value,
-				updatedAt: new Date().toISOString()
-			},
-			{ updateFavorites: true }
-		)
-		debouncedUpdate(value)
+		documentUpdater.updateField('title', value)
 	}
 
-	const onKeyDown = (event: React.KeyboardEvent) => {
-		if (event.key === 'Enter') {
-			disabledInput()
-		}
-	}
-
-	const handleEmojiSelect = (icon: string) => {
-		queryClientService.updateAllFields(
-			initialData,
-			{
-				icon,
-				updatedAt: new Date().toISOString()
-			},
-			{ updateFavorites: true }
-		)
-
-		update({
-			id: initialData?.id,
-			data: { icon, updatedAt: new Date().toISOString() }
-		})
+	const handleEmojiSelect = (emoji: { native: string }) => {
+		documentUpdater.updateField('icon', emoji.native)
 	}
 
 	const deleteIcon = () => {
-		queryClientService.updateAllFields(
-			initialData,
-			{
-				icon: '',
-				updatedAt: new Date().toISOString()
-			},
-			{ updateFavorites: true }
-		)
-
-		update({
-			id: initialData?.id,
-			data: { icon: '', updatedAt: new Date().toISOString() }
-		})
+		documentUpdater.deleteField('icon')
 	}
 
 	return (
@@ -194,8 +115,6 @@ export const Toolbar = ({ initialData, preview }: ToolbarProps) => {
 				<TextareaAutosize
 					ref={inputRef}
 					spellCheck='false'
-					onBlur={disabledInput}
-					onKeyDown={onKeyDown}
 					value={title || ''}
 					placeholder='Untitled'
 					onChange={e => onChange(e.target.value)}
