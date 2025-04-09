@@ -1,12 +1,5 @@
 'use client'
-import {
-	createContext,
-	useCallback,
-	useContext,
-	useEffect,
-	useRef,
-	useState
-} from 'react'
+import { createContext, useContext, useEffect, useRef, useState } from 'react'
 import { useMediaQuery } from 'usehooks-ts'
 import { useSidebar } from '.'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -95,7 +88,7 @@ export function DocumentProvider({ children }: { children: React.ReactNode }) {
 		}, 300) // Даем время на анимацию
 	}
 
-	const collapse = useCallback(async () => {
+	const collapse = async () => {
 		setIsCollapsed(true)
 		setIsResetting(true)
 		await sleep(300)
@@ -106,11 +99,11 @@ export function DocumentProvider({ children }: { children: React.ReactNode }) {
 		const params = new URLSearchParams(searchParams.toString())
 		params.delete('v')
 		router.replace(`?${params.toString()}`, { scroll: false })
-	}, [searchParams, router])
+	}
 
 	useEffect(() => {
 		collapse()
-	}, [collapse])
+	}, [])
 
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
