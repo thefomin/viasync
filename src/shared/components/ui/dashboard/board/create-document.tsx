@@ -7,6 +7,7 @@ import { useCreateMutation } from '@/shared/hooks/document'
 
 import { useQueryClient } from '@tanstack/react-query'
 import { QueryClientService } from '@/shared/services/document/column'
+import { columnApiQuery } from '@/shared/api'
 
 interface CreateFormProps {
 	column?: IColumn
@@ -39,11 +40,23 @@ export function CreateDocument({
 	if (!column) return null
 	const handleCreate = () => {
 		queryClientService.updateAllFields(column)
-		create({
-			columnId: column.id,
-			parentDocumentId: column.parentDocumentId,
-			title: ''
-		})
+		create(
+			{
+				columnId: column.id,
+				parentDocumentId: column.parentDocumentId,
+				title: ''
+			},
+			{
+				onSuccess: async () => {
+					await queryClient.invalidateQueries({
+						queryKey: [
+							columnApiQuery.baseKey,
+							column.parentDocumentId
+						]
+					})
+				}
+			}
+		)
 	}
 	return (
 		<Button
