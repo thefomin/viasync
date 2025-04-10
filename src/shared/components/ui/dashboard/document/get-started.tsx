@@ -4,7 +4,6 @@ import { useGetById } from '@/shared/hooks/document'
 import { useParams } from 'next/navigation'
 import { Button } from '../..'
 import { BsLayoutThreeColumns } from 'react-icons/bs'
-import { useSidebar } from '@/shared/providers'
 
 export const GetStarted = () => {
 	const params = useParams()

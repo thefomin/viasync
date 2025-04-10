@@ -16,7 +16,6 @@ import {
 	UserItem
 } from '.'
 import { Button } from '..'
-import { GetStarted } from './document'
 import { useCreateMutation } from '@/shared/hooks/document'
 import { useDocument, useSidebar } from '@/shared/providers'
 import { Settings } from './modals'
@@ -121,17 +120,6 @@ export function Navigation() {
 					</nav>
 				)}
 			</div>
-			{/* <div
-				ref={getStartedRef}
-				className={cn(
-					'absolute bottom-7 left-60 z-[9999] w-[calc(100%-250px)]',
-					isResetting && 'transition-all duration-300 ease-in-out',
-					isMobile && 'left-0 w-full'
-				)}
-				style={{ left: '250px' }}
-			>
-				{!!params.documentId && <GetStarted />}
-			</div> */}
 		</>
 	)
 }
