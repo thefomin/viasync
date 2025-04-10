@@ -6,7 +6,7 @@ import { QueryClientService } from '@/shared/services/document'
 export class DocumentUpdater {
 	private initialData: IDocument
 	private queryClientService: QueryClientService
-	private debouncedUpdate: (field: string, value: any) => void
+	private debouncedUpdate: (field: string, value: unknown) => void
 	private updateMutation: (args: {
 		id: string
 		data: Partial<IDocument>
@@ -21,7 +21,7 @@ export class DocumentUpdater {
 		this.queryClientService = new QueryClientService(queryClient)
 		this.updateMutation = updateMutation
 
-		this.debouncedUpdate = debounce((field: string, value: any) => {
+		this.debouncedUpdate = debounce((field: string, value: unknown) => {
 			this.updateMutation({
 				id: this.initialData.id,
 				data: { [field]: value, updatedAt: new Date().toISOString() }
@@ -29,7 +29,7 @@ export class DocumentUpdater {
 		}, 500)
 	}
 
-	public updateField(field: keyof IDocument, value: any) {
+	public updateField(field: keyof IDocument, value: unknown) {
 		this.queryClientService.updateAllFields(
 			this.initialData,
 			{ [field]: value, updatedAt: new Date().toISOString() },
