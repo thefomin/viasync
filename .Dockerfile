@@ -40,13 +40,12 @@ FROM node:20-slim AS base
 
 WORKDIR /app
 
-COPY package*.json ./
-
-COPY .next .next
-
 COPY .next .next
 COPY public public
+COPY package*.json ./
 COPY next.config.mjs next.config.mjs
+
+RUN npm install --production
 
 EXPOSE 3000
 
