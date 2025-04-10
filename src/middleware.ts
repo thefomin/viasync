@@ -7,7 +7,7 @@ export default function middleware(request: NextRequest) {
 	const isAuthPage = url.includes('/auth')
 
 	if (isAuthPage && session) {
-		return NextResponse.redirect(new URL('/settings', url))
+		return NextResponse.redirect(new URL('/', url))
 	}
 
 	if (!isAuthPage && !session) {
