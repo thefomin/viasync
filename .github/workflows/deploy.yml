@@ -44,4 +44,4 @@ jobs:
 
             # Build Docker image
             - name: Build Docker image
-              run: docker build -t my-nextjs-app .
+              run: docker build -f .Dockerfile -t my-nextjs-app .
