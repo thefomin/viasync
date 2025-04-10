@@ -27,7 +27,6 @@ export function Navigation() {
 	const { create, isPending } = useCreateMutation()
 	const {
 		navbarRef,
-		getStartedRef,
 		isResetting,
 		isCollapsed,
 		resetWidth,
@@ -122,7 +121,7 @@ export function Navigation() {
 					</nav>
 				)}
 			</div>
-			<div
+			{/* <div
 				ref={getStartedRef}
 				className={cn(
 					'absolute bottom-7 left-60 z-[9999] w-[calc(100%-250px)]',
@@ -132,7 +131,7 @@ export function Navigation() {
 				style={{ left: '250px' }}
 			>
 				{!!params.documentId && <GetStarted />}
-			</div>
+			</div> */}
 		</>
 	)
 }

@@ -12,7 +12,6 @@ import { useMediaQuery } from 'usehooks-ts'
 interface SidebarContextType {
 	sidebarRef: React.RefObject<HTMLElement>
 	navbarRef: React.RefObject<HTMLDivElement>
-	getStartedRef: React.RefObject<HTMLDivElement>
 	isResetting: boolean
 	isCollapsed: boolean
 	isMobile: boolean
@@ -28,20 +27,15 @@ export function SidebarProvider({ children }: { children: React.ReactNode }) {
 	const isResizingRef = useRef(false)
 	const sidebarRef = useRef<HTMLElement | null>(null)
 	const navbarRef = useRef<HTMLDivElement | null>(null)
-	const getStartedRef = useRef<HTMLDivElement | null>(null)
 	const [isResetting, setIsResetting] = useState(false)
 	const [isCollapsed, setIsCollapsed] = useState(isMobile)
 
 	const updateStyles = (width: number) => {
-		if (!sidebarRef.current || !navbarRef.current || !getStartedRef.current)
-			return
+		if (!sidebarRef.current || !navbarRef.current) return
 
 		sidebarRef.current.style.width = `${width}px`
 		navbarRef.current.style.left = `${width}px`
 		navbarRef.current.style.width = `calc(100% - ${width}px)`
-
-		getStartedRef.current.style.left = `${width}px`
-		getStartedRef.current.style.width = `calc(100% - ${width}px)`
 	}
 
 	const handleMouseMove = (e: MouseEvent) => {
@@ -89,7 +83,6 @@ export function SidebarProvider({ children }: { children: React.ReactNode }) {
 			value={{
 				sidebarRef,
 				navbarRef,
-				getStartedRef,
 				isResetting,
 				isCollapsed,
 				isMobile,

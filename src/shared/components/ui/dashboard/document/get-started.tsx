@@ -4,17 +4,17 @@ import { useGetById } from '@/shared/hooks/document'
 import { useParams } from 'next/navigation'
 import { Button } from '../..'
 import { BsLayoutThreeColumns } from 'react-icons/bs'
+import { useSidebar } from '@/shared/providers'
 
 export const GetStarted = () => {
 	const params = useParams()
 	const documentId = params.documentId as string
-
 	const { document } = useGetById(documentId)
 
 	if (!document) return null
 
 	return (
-		<div className='flex w-full items-center justify-center gap-x-2 bg-background py-2 pl-3 pr-2.5'>
+		<div className='flex w-full items-center justify-center gap-x-2 py-2 pl-3 pr-2.5'>
 			<div className='flex w-full flex-col items-center gap-3'>
 				<div className='flex items-start justify-start text-xs font-medium text-muted-foreground/60'>
 					Get started with
