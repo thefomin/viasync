@@ -46,7 +46,7 @@ COPY .next .next
 
 COPY .next .next
 COPY public public
-COPY next.config.js next.config.js
+COPY next.config.mjs next.config.mjs
 
 EXPOSE 3000
 
