@@ -14,7 +14,7 @@ export function MainProvider({ children }: PropsWithChildren<unknown>) {
 		<TanstackProvider>
 			<ThemeProvider
 				attribute='class'
-				defaultTheme='system'
+				defaultTheme='dark'
 				disableTransitionOnChange
 			>
 				<ToastProvider />
