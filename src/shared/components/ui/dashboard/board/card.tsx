@@ -7,7 +7,6 @@ import { Button } from '../..'
 import { IconPicker } from '../document'
 
 import { cn } from '@/shared/utils'
-import Link from 'next/link'
 import { useDocument } from '@/shared/providers'
 import { useRouter } from 'next/navigation'
 
