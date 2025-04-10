@@ -261,7 +261,8 @@ export class QueryClientService {
 			)
 			this.queryClient.setQueryData<IDocument[]>(
 				[documentsArchivedApiQuery.baseKey],
-				updatedArchives
+				(oldArchives = []) =>
+					oldArchives.filter(doc => doc.id !== deletedId)
 			)
 			this.queryClient.setQueryData<IDocument[]>(
 				[documentsFavoritedApiQuery.baseKey],
