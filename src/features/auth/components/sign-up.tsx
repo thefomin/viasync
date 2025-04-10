@@ -46,7 +46,7 @@ export function SignupForm() {
 		<AuthWrapper
 			heading='Создать аккаунт'
 			description='Уже есть аккаунт?'
-			backButtonLabel='Войти'
+			backButtonLabel='Войти в аккаунт '
 			backButtonHref='/auth/sign-in'
 			isShowSocial
 		>
@@ -66,7 +66,7 @@ export function SignupForm() {
 										type='username'
 										disabled={isLoadingSignup}
 										{...field}
-										className='bg-bg_card text-text__primary h-[50px] rounded-[24px] border-0 text-[14px]'
+										className='bg-bg_card text-text__primary h-[36px] rounded-[6px] border-0 text-[14px]'
 									/>
 								</FormControl>
 								<FormMessage />
@@ -84,7 +84,7 @@ export function SignupForm() {
 										type='email'
 										disabled={isLoadingSignup}
 										{...field}
-										className='bg-bg_card text-text__primary h-[50px] rounded-[24px] border-0 text-[14px]'
+										className='bg-bg_card text-text__primary h-[36px] rounded-[6px] border-0 text-[14px]'
 									/>
 								</FormControl>
 								<FormMessage />
@@ -102,7 +102,7 @@ export function SignupForm() {
 										type='password'
 										disabled={isLoadingSignup}
 										{...field}
-										className='bg-bg_card text-text__primary h-[50px] rounded-[24px] border-0 text-[14px]'
+										className='bg-bg_card text-text__primary h-[36px] rounded-[6px] border-0 text-[14px]'
 									/>
 								</FormControl>
 								<FormMessage />
@@ -120,7 +120,7 @@ export function SignupForm() {
 										type='password'
 										disabled={isLoadingSignup}
 										{...field}
-										className='bg-bg_card text-text__primary h-[50px] rounded-[24px] border-0 text-[14px]'
+										className='bg-bg_card text-text__primary h-[36px] rounded-[6px] border-0 text-[14px]'
 									/>
 								</FormControl>
 								<FormMessage />
@@ -138,7 +138,7 @@ export function SignupForm() {
 					</div>
 					<Button
 						type='submit'
-						className='flex h-[50px] items-center justify-center rounded-[24px] p-[12px] text-base'
+						className='flex h-[36px] items-center justify-center rounded-[6px] bg-[#2383e2] p-[12px] text-white hover:bg-[#0077d4]'
 						disabled={isLoadingSignup}
 					>
 						Создать аккуант

@@ -23,13 +23,16 @@ export function AuthWrapper({
 	return (
 		<div className='flex h-screen w-full justify-center'>
 			<div className='flex w-full flex-col items-center justify-center'>
-				<div className='bg-card w-[400px] rounded-[28px] border-0 p-[16px]'>
+				<div className='w-[400px] rounded-[12px] border-0 p-[12px]'>
 					<div className='flex w-full flex-col justify-center p-4'>
-						<h1 className='flex justify-center text-4xl font-bold'>
-							{heading}
+						<h1 className='flex justify-start text-xl font-semibold'>
+							Подумай. Сделай.
 						</h1>
+						<h2 className='flex justify-start text-xl font-semibold text-muted-foreground'>
+							{heading}
+						</h2>
 					</div>
-					<div className='flex flex-col gap-4 p-3'>
+					<div className='flex flex-col gap-2 p-3'>
 						{isShowSocial && <AuthSocial />}
 						{children}
 						<div className='relative mb-4'>

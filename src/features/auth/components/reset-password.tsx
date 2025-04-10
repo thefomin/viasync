@@ -22,8 +22,10 @@ import {
 	TypeResetPasswordSchema
 } from '@/shared/schemes/auth'
 import { AuthWrapper } from '.'
+import { useTheme } from 'next-themes'
 
 export function ResetPasswordForm() {
+	const { theme } = useTheme()
 	const [recapatchaValue, setRecaptchaValue] = useState<string | null>(null)
 	const form = useForm<TypeResetPasswordSchema>({
 		resolver: zodResolver(ResetPasswordSchema),
@@ -43,7 +45,7 @@ export function ResetPasswordForm() {
 		<AuthWrapper
 			heading='Сброс пароля'
 			backButtonLabel='Войти в аккаунт'
-			backButtonHref='/auth/signin'
+			backButtonHref='/auth/sign-in'
 		>
 			<Form {...form}>
 				<form
@@ -62,7 +64,7 @@ export function ResetPasswordForm() {
 										type='email'
 										disabled={isLoadingReset}
 										{...field}
-										className='bg-bg_card text-text__primary h-[50px] rounded-[24px] border-0 text-[14px]'
+										className='bg-bg_card text-text__primary h-[36px] rounded-[6px] border-0 text-[14px]'
 									/>
 								</FormControl>
 								<FormMessage />
@@ -75,12 +77,13 @@ export function ResetPasswordForm() {
 							sitekey={
 								process.env.GOOGLE_RECAPTCHA_SITE_KEY as string
 							}
+							theme={theme === 'light' ? 'light' : 'dark'}
 							onChange={setRecaptchaValue}
 						/>
 					</div>
 					<Button
 						type='submit'
-						className='flex h-[50px] items-center justify-center rounded-[24px] p-[12px] text-base'
+						className='flex h-[36px] items-center justify-center rounded-[6px] bg-[#2383e2] p-[12px] text-white hover:bg-[#0077d4]'
 						disabled={isLoadingReset}
 					>
 						Сбросить пароль

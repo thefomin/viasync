@@ -42,7 +42,7 @@ export function SigninForm() {
 	}
 	return (
 		<AuthWrapper
-			heading='Войти'
+			heading='Войти в viasync'
 			backButtonLabel='Создать аккаунт'
 			backButtonHref='/auth/sign-up'
 			isShowSocial
@@ -65,7 +65,7 @@ export function SigninForm() {
 											placeholder='Код'
 											disabled={isLoadingSignin}
 											{...field}
-											className='text-text__primary h-[50px] rounded-[24px] border-0 text-[14px]'
+											className='bg-bg_card text-text__primary h-[36px] rounded-[6px] border-0 text-[14px]'
 										/>
 									</FormControl>
 									<FormMessage />
@@ -83,11 +83,11 @@ export function SigninForm() {
 										{/* <FormLabel>Почта</FormLabel> */}
 										<FormControl>
 											<Input
-												placeholder='email@example.com'
+												placeholder='Введите почту'
 												type='email'
 												disabled={isLoadingSignin}
 												{...field}
-												className='bg-bg_card text-text__primary h-[50px] rounded-[24px] border-0 text-[14px]'
+												className='bg-bg_card text-text__primary h-[36px] rounded-[6px] border-0 text-[14px]'
 											/>
 										</FormControl>
 										<FormMessage />
@@ -100,12 +100,15 @@ export function SigninForm() {
 								render={({ field }) => (
 									<FormItem>
 										<FormControl>
+											{/* <Label htmlFor='email'>
+												Your email address
+											</Label> */}
 											<Input
-												placeholder='Пароль'
+												placeholder='Введите пароль'
 												type='password'
 												disabled={isLoadingSignin}
 												{...field}
-												className='bg-bg_card text-text__primary h-[50px] rounded-[24px] border-0 text-[14px]'
+												className='bg-bg_card text-text__primary h-[36px] rounded-[6px] border-0 text-[14px]'
 											/>
 										</FormControl>
 										<FormMessage />
@@ -123,11 +126,13 @@ export function SigninForm() {
 							theme={theme === 'light' ? 'light' : 'dark'}
 							size='normal'
 							className='overflow-hidden border-none'
+							style={{ border: 'none', outline: 'none' }}
+							isolated={true}
 						/>
 					</div>
 					<Button
 						type='submit'
-						className='flex h-[50px] items-center justify-center rounded-[24px] p-[12px] text-base'
+						className='flex h-[36px] items-center justify-center rounded-[6px] bg-[#2383e2] p-[12px] text-white hover:bg-[#0077d4]'
 						disabled={isLoadingSignin}
 					>
 						Войти в аккаунт

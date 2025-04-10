@@ -1,8 +1,8 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { FaGoogle, FaYandex } from 'react-icons/fa'
-
+import { FaYandex } from 'react-icons/fa'
+import { FcGoogle } from 'react-icons/fc'
 import { Button } from '@/shared/components/ui'
 
 import { useOAuthByProviderMutation } from '@/shared/hooks/auth'
@@ -20,32 +20,27 @@ export function AuthSocial() {
 	}
 	return (
 		<>
-			<div className='flex w-full flex-row gap-4'>
+			<div className='flex w-full flex-col gap-2'>
 				<Button
 					onClick={() => onClick('google')}
 					variant='outline'
-					className='flex h-[50px] w-full items-center justify-center rounded-[24px] p-[12px]'
+					className='relative flex h-[36px] w-full items-center justify-center rounded-[6px] p-[12px] [&_svg]:size-5'
 				>
-					<FaGoogle className='mr-2 size-4' />
-					Google
+					<FcGoogle className='absolute left-2.5 mr-2 size-5 h-6 w-6' />
+					Продолжить с Google
 				</Button>
 				<Button
 					onClick={() => onClick('yandex')}
 					variant='outline'
-					className='flex h-[50px] w-full items-center justify-center rounded-[24px] p-[12px]'
+					className='relative flex h-[36px] w-full items-center justify-center rounded-[6px] p-[12px] [&_svg]:size-4'
 				>
-					<FaYandex className='mr-2 size-4' />
-					Яндекс
+					<FaYandex className='absolute left-2.5 mr-2 size-5 h-4 w-4 text-rose-600' />
+					Продолжить с Яндекс
 				</Button>
 			</div>
-			<div className='relative mb-2 space-y-4'>
+			<div className='relative mb-8'>
 				<div className='absolute inset-0 top-[15px] flex items-center'>
 					<span className='w-full border-t' />
-				</div>
-				<div className='relative flex justify-center text-xs uppercase'>
-					<span className='bg-card text-muted-foreground px-2'>
-						Или
-					</span>
 				</div>
 			</div>
 		</>
