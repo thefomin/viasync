@@ -71,16 +71,16 @@ export const EnumColor = {
 export type EnumColor = (typeof EnumColor)[keyof typeof EnumColor]
 
 export const colorStyles: Record<EnumColor, string> = {
-	DEFAULT: 'bg-muted-foreground/20 text-foreground',
-	GRAY: 'bg-muted-foreground/30 text-foreground',
-	BROWN: 'bg-amber-700/40 text-white/80',
-	ORANGE: 'bg-amber-600/40 text-white/80',
-	YELLOW: 'bg-amber-500/50 text-white/80',
-	GREEN: 'bg-emerald-600/50 text-white/80',
-	BLUE: 'bg-sky-500/30 text-white/80',
-	PURPLE: 'bg-purple-500/30 text-white/80',
-	PINK: 'bg-pink-500/30 text-white/80',
-	RED: 'bg-red-500/30 text-white/80'
+	DEFAULT: 'bg-color-default text-foreground',
+	GRAY: 'bg-color-gray text-foreground',
+	BROWN: 'bg-color-brown text-foreground/80',
+	ORANGE: 'bg-color-orange text-foreground/80',
+	YELLOW: 'bg-color-yellow text-foreground/80',
+	GREEN: 'bg-color-green text-foreground/80',
+	BLUE: 'bg-color-blue text-foreground/80',
+	PURPLE: 'bg-color-purple text-foreground/80',
+	PINK: 'bg-color-pink text-foreground/80',
+	RED: 'bg-color-red text-foreground/80'
 }
 
 export const colorDotStyles: Record<EnumColor, string> = {
