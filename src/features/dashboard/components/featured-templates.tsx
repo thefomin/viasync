@@ -6,6 +6,7 @@ import { BiSolidChalkboard } from 'react-icons/bi'
 import Image from 'next/image'
 import { IconType } from 'react-icons'
 import { useCreateMutation } from '@/shared/hooks/document'
+import { useProfile } from '@/shared/hooks/user'
 
 interface TemplateProps {
 	title: string
@@ -16,6 +17,8 @@ interface TemplateProps {
 	isBoard?: boolean
 }
 export function FeaturedTemplates() {
+	const { user } = useProfile()
+	if (!user) return null
 	return (
 		<div className='flex flex-col gap-6 text-foreground'>
 			<div className='flex flex-col'>
