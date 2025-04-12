@@ -93,6 +93,7 @@ body {
 	--sidebar-border: 220 13% 91%;
 	--sidebar-ring: 217.2 91.2% 59.8%;
 
+	--bn-colors-editor-background: #e03e3e !important;
 	--bn-colors-highlights-gray-text: #9b9a97;
 	--bn-colors-highlights-gray-background: #265a8e !important;
 	--bn-colors-highlights-brown-text: #64473a;
@@ -286,6 +287,16 @@ body {
 		--chart-4: 43 74% 66%;
 		--chart-5: 27 87% 67%;
 		--radius: 0.5rem;
+		--color-default: 161, 161, 170, 0.2;
+		--color-gray: 161, 161, 170, 0.3;
+		--color-brown: 189, 78, 0, 0.4;
+		--color-orange: 224, 113, 0, 0.4;
+		--color-yellow: 255, 155, 0, 0.5;
+		--color-green: 0, 153, 102, 0.5;
+		--color-blue: 0, 188, 255, 0.3;
+		--color-purple: 173, 71, 255, 0.3;
+		--color-pink: 246, 49, 154, 0.3;
+		--color-red: 251, 45, 55, 0.3;
 	}
 	.dark {
 		--background: 240 10% 3.9%;
@@ -312,6 +323,17 @@ body {
 		--chart-3: 30 80% 55%;
 		--chart-4: 280 65% 60%;
 		--chart-5: 340 75% 55%;
+
+		--color-default: 161, 161, 170, 0.2;
+		--color-gray: 161, 161, 170, 0.3;
+		--color-brown: 189, 78, 0, 0.4;
+		--color-orange: 224, 113, 0, 0.4;
+		--color-yellow: 255, 155, 0, 0.5;
+		--color-green: 0, 153, 102, 0.5;
+		--color-blue: 0, 188, 255, 0.3;
+		--color-purple: 173, 71, 255, 0.3;
+		--color-pink: 246, 49, 154, 0.3;
+		--color-red: 251, 45, 55, 0.3;
 	}
 }
 
