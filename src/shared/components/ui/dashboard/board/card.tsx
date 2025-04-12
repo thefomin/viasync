@@ -89,9 +89,7 @@ export const Card = ({
 						className='relative min-h-[21px] w-auto min-w-0 max-w-full flex-grow truncate whitespace-pre-wrap break-words px-[1px] py-[2px] text-sm font-medium'
 						data-placeholder='Untitled'
 					>
-						{initialData.title
-							? document?.title || ''
-							: initialData.title || ''}
+						{document?.title}
 					</div>
 				</div>
 			</div>
