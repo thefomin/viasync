@@ -24,7 +24,7 @@ export function Sidebar() {
 			<aside
 				ref={documentRef}
 				className={cn(
-					'group/sidebar relative z-[9999] flex h-full border border-l bg-secondary transition-all duration-300 ease-in-out',
+					'group/sidebar relative z-[9999] flex h-full border border-l bg-third transition-all duration-300 ease-in-out',
 					!isOpen && 'pointer-events-none scale-x-95 opacity-0',
 					isCollapsed
 						? 'invisible w-0 overflow-hidden'
