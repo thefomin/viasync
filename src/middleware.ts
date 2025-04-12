@@ -18,5 +18,5 @@ export default function middleware(request: NextRequest) {
 }
 
 export const config = {
-	matcher: ['/auth/:path*', '/dashboard/:path*', '/']
+	matcher: ['/((?!_next|api|auth|preview).*)']
 }
