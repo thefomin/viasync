@@ -35,14 +35,14 @@ export function FeaturedTemplates() {
 						<Template
 							title='Document'
 							desc='By viasync'
-							src='/assets/images/dashboard/desktop.png'
+							src='/assets/images/dashboard/doc.png'
 							alt='doc'
 							icon={AiFillFile}
 						/>
 						<Template
 							title='Board'
 							desc='By viasync'
-							src='/assets/images/dashboard/desktop.png'
+							src='/assets/images/dashboard/board.png'
 							alt='board'
 							icon={BiSolidChalkboard}
 							isBoard={true}
