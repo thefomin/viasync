@@ -1,6 +1,6 @@
 'use client'
 
-import { DashboardWrapper, LastVisited, Title } from '.'
+import { DashboardWrapper, FeaturedTemplates, LastVisited, Title } from '.'
 
 export function Dashboard() {
 	return (
@@ -9,6 +9,7 @@ export function Dashboard() {
 				<Title />
 
 				<LastVisited />
+				<FeaturedTemplates />
 			</div>
 		</DashboardWrapper>
 	)
