@@ -67,11 +67,7 @@ export function Sidebar() {
 							{document.isPublished && !document.isArchived && (
 								<BannerPublish initialData={document} />
 							)}
-							<Cover
-								key={document.id}
-								data={document}
-								isSidebar={true}
-							/>
+							<Cover data={document} isSidebar={true} />
 							<ToolbarBoard
 								key={document.id}
 								initialData={document}
