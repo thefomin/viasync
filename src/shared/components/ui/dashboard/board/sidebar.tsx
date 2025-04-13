@@ -10,7 +10,6 @@ import { useSearchParams } from 'next/navigation'
 import { Navbar } from '.'
 import { ToolbarBoard } from '../board'
 import { Banner, BannerPublish, Cover, Editor } from '../document'
-import { DocumentOptions } from './options'
 
 export function Sidebar() {
 	const { documentRef, collapse, isCollapsed, handleMouseDown } =
@@ -73,10 +72,6 @@ export function Sidebar() {
 								initialData={document}
 								isSidebar={true}
 							/>
-							<div className='relative'>
-								<DocumentOptions initialData={document} />
-								<div className='absolute -bottom-[12px] left-1 right-1 mx-[60px] h-[4px] border-b border-muted-foreground/10'></div>
-							</div>
 
 							<div className='pl-5 pr-[0.6rem]'>
 								<Editor
