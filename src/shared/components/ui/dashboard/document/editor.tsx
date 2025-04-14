@@ -57,6 +57,7 @@ export const Editor = ({ initialData, editable }: EditorProps) => {
 	)
 
 	const onChange = (content: string) => {
+		if (!editable) return
 		// Обновляем все поля с новым контентом
 		queryClientService.updateAllFields(initialData, {
 			content,
